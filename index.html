@@ -2,12 +2,49 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=viewport-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calculator</title>
         <link rel="stylesheet" href="./styles.css">
         <script href='./script.js' defer></script>
     </head>
-    <body>
-        
+    <body class="flex row">
+        <div id="art"></div>
+        <div id="calculator" class="flex column">
+            <div id="screen">
+
+            </div>
+            <div id="keyboard" class="flex column">
+                <div id="row-1" class="keyboard-row flex row">
+                    <button id="clear" class="button operator"></button>
+                    <button id="plus-minus" class="button operator"></button>
+                    <button id="percent" class="button operator"></button>
+                    <button id="divide" class="button operator"></button>
+                </div>
+                <div id="row-2" class="keyboard-row flex row">
+                    <button id="seven" class="button digit"></button>
+                    <button id="eight" class="button digit"></button>
+                    <button id="nine" class="button digit"></button>
+                    <button id="multiply" class="button operator"></button>
+                </div>
+                <div id="row-3" class="keyboard-row flex row">
+                    <button id="four" class="button digit"></button>
+                    <button id="five" class="button digit"></button>
+                    <button id="six" class="button digit"></button>
+                    <button id="subtract" class="button operator"></button>
+                </div>
+                <div id="row-4" class="keyboard-row flex row">
+                    <button id="one" class="button digit"></button>
+                    <button id="two" class="button digit"></button>
+                    <button id="three" class="button digit"></button>
+                    <button id="add" class="button operator"></button>
+                </div>
+                <div id="row-5" class="keyboard-row flex row">
+                    <button id="ans" class="button operator"></button>
+                    <button id="zero" class="button digit"></button>
+                    <button id="point" class="button digit"></button>
+                    <button id="equals" class="button operator"></button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
