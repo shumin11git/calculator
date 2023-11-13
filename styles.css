@@ -39,7 +39,8 @@ body {
     max-height: 900px;
     border-radius: 20% / 15%;
     gap: 3%;
-    background-color: #e9a86a;
+    background: linear-gradient(to right, #24101c, #e9a86a 12%, #e9a86a 92%, #24101c);
+    box-shadow: inset 6px -12px 20px black;
 }
 
 #screen, #keyboard {
@@ -49,8 +50,8 @@ body {
 /* screen */
 
 #screen {
+    position: relative;
     height: 20%;
-    margin-top: 5%;
     background: #705944;
     border: 5px solid #8e5b46;
     border-radius: 10px;
@@ -61,9 +62,19 @@ body {
     height: 95%;
     width: 97%;
     justify-content: end;
-    background-color: #55503b;
+    background: radial-gradient(circle at 80% 30%,#87816e, #746e5c 20%, #55503b 80%, #3c3929);
     box-shadow: inset -2px 4px 10px #2c261e;
     text-shadow: -4px 8px 2px #3b372c;
+    border-radius: 10%;
+}
+
+#filter-over-screen-text {
+    position: absolute;
+    z-index: 1;
+    height: 95%;
+    width: 97%;
+    background: radial-gradient(rgba(237, 216, 181, 0.1) 40%, rgba(0, 0, 0, 0.3));
+    box-shadow: inset -2px 4px 10px #2c261e;
     border-radius: 10%;
 }
 
@@ -73,6 +84,18 @@ body {
     font-size: 3rem;
     font-family: 'Audiowide';
     overflow: hidden;
+}
+
+#screen-light-spot {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 60%;
+    border-radius: 50%;
+    background: radial-gradient(rgba(255, 255, 255, 0.2), transparent 50%);
+    transform: rotate(5deg);
 }
 
 /* keyboard */
@@ -91,7 +114,7 @@ body {
     background: radial-gradient(circle at 0% 100%, #dfbfb5, #f8f1e9);
     border: 0;
     font-family: 'Audiowide';
-    color: #2b0d14;
+    color: #4d2815;
     box-shadow: inset 2px -4px 10px #2c261e;
     filter: drop-shadow(-2px 5px 2px #170914);
 }
@@ -100,6 +123,7 @@ body {
     background: radial-gradient(circle at 0% 100%, #d8b9af, #ede7df);
     filter: drop-shadow(-1px 3px 2px #170914);
     transform: scale(0.98);
+    color: #342223;
 }
 
 #zero {
