@@ -1,6 +1,7 @@
 // variables for control ----------------->
 
-let maxTextLength = 12;
+let maxTextLength = 10;
+let showCount = 0;
 
 // query selectors ----------------------->
 
@@ -12,6 +13,30 @@ let plusMinusButton = document.querySelector('#plus-minus');
 let equalsButton = document.querySelector('#equals');
 let clearButton = document.querySelector('#clear');
 let pointButton = document.querySelector('#point');
+let buttonKeys = document.querySelectorAll('.key');
+
+
+let functionsForKeys = {
+    '%': handleOperator,
+    '/': handleOperator,
+    '*': handleOperator,
+    '-': handleOperator,
+    '+': handleOperator,
+    '=': handleEquals,
+    '1': handleDigit,
+    '2': handleDigit,
+    '3': handleDigit,
+    '4': handleDigit,
+    '5': handleDigit,
+    '6': handleDigit,
+    '7': handleDigit,
+    '8': handleDigit,
+    '9': handleDigit,
+    '0': handleDigit,
+    '.': handlePoint,
+    'Backspace': handleClear,
+    'Enter': handleEquals
+};
 
 //
 
@@ -26,70 +51,27 @@ let readyForAnswer = false;
 // event listeners ----------------------->
 
 digitButtons.forEach(digitButton => {
-    digitButton.addEventListener('click', e => {
-        let digit = digitButton.textContent;
-        if (readyForNumberB) {
-            numberA = screenText.textContent;
-            screenText.textContent = '';
-            readyForNumberB = false;
-            readyForAnswer = true;
-            show('digitIF');
-        }
-        printDigitToScreen(digit);
-        show('digit');
-    });
+    digitButton.addEventListener('click', handleDigit);
 });
 
 operatorButtons.forEach(operatorButton => {
-    operatorButton.addEventListener('click', e => {
-        if (readyForAnswer) {
-            printAnswer();
-            operator = operatorButton.textContent;
-            readyForNumberB = true;
-            show('operatorIF');
-        }
-        readyForNumberB = true;
-        operator = operatorButton.textContent;
-        show('operator');
-    });
+    operatorButton.addEventListener('click', handleOperator);
 });
 
-equalsButton.addEventListener('click', e => {
-    if (readyForAnswer && !readyForNumberB) {
-        printAnswer();
-        operator = '';
-        readyForNumberB = true;
-        readyForAnswer = false;
-        show('equal');
-    };
-});
+equalsButton.addEventListener('click', handleEquals);
 
-plusMinusButton.addEventListener('click', e => {
-    if (screenText.textContent > 0) {
-        screenText.textContent = '-' + screenText.textContent;
-    } else if (screenText.textContent < 0) {
-        screenText.textContent = screenText.textContent.slice(1);
-    };
-});
+clearButton.addEventListener('click', handleClear);
 
-clearButton.addEventListener('click', e => {
-    screenText.textContent = '';
-    numberA = 0;
-    numberB = 0;
-    operator = '';
-    answer = 0;
-    readyForNumberB = false;
-    readyForAnswer = false;
-});
+pointButton.addEventListener('click', handlePoint);
 
-pointButton.addEventListener('click', e => {
-    screenText.textContent += pointButton.textContent;
-})
+plusMinusButton.addEventListener('click', handlePlusMinus);
 
+window.addEventListener('keydown', handleKey);
 
 // functions ----------------------------->
 
 function printDigitToScreen(digit) {
+    screenText.textContent = screenText.textContent.toString();
     if (screenText.textContent.length <= maxTextLength) {
         screenText.textContent += digit;
     }
@@ -105,8 +87,11 @@ function printAnswer() {
 }
 
 function show(point) {
+    let onScreen = screenText.textContent;
     let data = {
+        showCount,
         point, 
+        onScreen,
         numberA, 
         numberB, 
         operator, 
@@ -115,7 +100,94 @@ function show(point) {
         readyForAnswer
     };
     console.table(data);
+    showCount++;
 }
+
+// events
+
+function handleDigit(e) {
+    let digit;
+    e.type === 'keydown' ? 
+        digit = e.key : 
+        digit = e.target.textContent ;
+    if (readyForNumberB) {
+        numberA = screenText.textContent;
+        screenText.textContent = '';
+        readyForNumberB = false;
+        readyForAnswer = true;
+        show('digitB');
+    }
+    printDigitToScreen(digit);
+    show('digit');
+}
+
+function handleOperator(e) {
+    let givenOperator;
+    e.type === 'keydown' ? 
+        givenOperator = e.key : 
+        givenOperator = e.target.textContent ;
+    if (readyForAnswer) {
+        printAnswer();
+        operator = givenOperator;
+        readyForNumberB = true;
+        show('operatorB');
+    }
+    readyForNumberB = true;
+    operator = givenOperator;
+    show('operator');
+}
+
+function handleEquals(e) {
+    if (operator === '') {
+        readyForAnswer = false;
+        return;
+    };
+    if (readyForAnswer && !readyForNumberB) {
+        printAnswer();
+        operator = '';
+        readyForNumberB = true;
+        readyForAnswer = false;
+        show('equal');
+    };
+}
+
+function handleClear(e) {
+    if (e.key === 'Backspace') {
+        screenText.textContent = screenText.textContent.slice(0, -1);
+        return;
+    }
+    screenText.textContent = '';
+    numberA = '';
+    numberB = '';
+    operator = '';
+    answer = '';
+    readyForNumberB = false;
+    readyForAnswer = false;
+}
+
+function handlePoint(e) {
+    console.log(e.type);
+    if (!screenText.textContent.includes('.')) {
+        screenText.textContent += '.';
+    }
+}
+
+function handlePlusMinus(e) {
+    if (screenText.textContent.length >= maxTextLength - 1) return;
+    if (screenText.textContent > 0 || screenText.textContent === '') {
+        screenText.textContent = '-' + screenText.textContent;
+    } else if (screenText.textContent < 0|| screenText.textContent === '-') {
+        screenText.textContent = screenText.textContent.slice(1);
+    };
+}
+
+function handleKey(e) {
+    if (e.key in functionsForKeys) {
+        return functionsForKeys[e.key](e);
+    }
+}
+
+
 
 // arithmetic operations ------------------>
 
@@ -140,11 +212,11 @@ function getAnswer(a, operator, b) {
         crudeAnswer.length <= maxTextLength) {
         return crudeAnswer;
     }
-    while (crudeAnswer.length > maxTextLength) {
+    while (crudeAnswer.toString().length > maxTextLength) {
         if (Number.isInteger(crudeAnswer)) {
             return 'Too big.';
         } else {
-            crudeAnswer = crudeAnswer.slice(0, -1);
+            crudeAnswer = Number(crudeAnswer.toString().slice(0, -1));
         }
     }
     return crudeAnswer;

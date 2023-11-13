@@ -6,59 +6,37 @@
         <title>Calculator</title>
         <link rel="stylesheet" href="./styles.css">
         <script src='./script.js' defer></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Actor">
+
     </head>
     <body class="flex">
         <div id="art"></div>
         <div id="calculator" class="flex column">
-            <div id="screen-container" class="flex">
-                <div id="screen" class="flex">
+            <div id="screen" class="flex">
+                <div id="screen-background" class="flex">
                     <p id="screen-text"></p>
                 </div>
             </div>
-            <div id="keyboard-container" class="flex">
-                <div id="keyboard-column-a" class="keyboard-column flex column">
-                    <div id="row-1a" class="keyboard-row flex">
-                        <button id="clear" class="button">AC</button>
-                        <button id="plus-minus" class="button">+/-</button>
-                    </div>
-                    <div id="row-2a" class="keyboard-row flex">
-                        <button id="seven" class="button digit">7</button>
-                        <button id="eight" class="button digit">8</button>
-                    </div>
-                    <div id="row-3a" class="keyboard-row flex">
-                        <button id="four" class="button digit">4</button>
-                        <button id="five" class="button digit">5</button>
-                    </div>
-                    <div id="row-4a" class="keyboard-row flex">
-                        <button id="one" class="button digit">1</button>
-                        <button id="two" class="button digit">2</button>
-                    </div>
-                    <div id="row-5a" class="keyboard-row flex">
-                        <button id="zero" class="button digit">0</button>
-                    </div>
-                </div>
-                <div id="keyboard-column-b" class="keyboard-column flex column">
-                    <div div id="row-1b" class="keyboard-row flex">
-                        <button id="percent" class="button operator">%</button>
-                        <button id="divide" class="button operator">/</button>
-                    </div>
-                    <div div id="row-2b" class="keyboard-row flex">
-                        <button id="nine" class="button digit">9</button>
-                        <button id="multiply" class="button operator">*</button>
-                    </div>
-                    <div div id="row-3b" class="keyboard-row flex">
-                        <button id="six" class="button digit">6</button>
-                        <button id="subtract" class="button operator">-</button>
-                    </div>
-                    <div div id="row-4b" class="keyboard-row flex">
-                        <button id="three" class="button digit">3</button>
-                        <button id="add" class="button operator">+</button>
-                    </div>
-                    <div div id="row-5b" class="keyboard-row flex">
-                        <button id="point" class="button">.</button>
-                        <button id="equals" class="button">=</button>
-                    </div>
-                </div>
+            <div id="keyboard">
+                <button id="clear" class="button">AC</button>
+                <button id="plus-minus" class="button">+/-</button>
+                <button id="percent" class="button operator key">%</button>
+                <button id="divide" class="button operator key">/</button>
+                <button id="seven" class="button digit key">7</button>
+                <button id="eight" class="button digit key">8</button>
+                <button id="nine" class="button digit key">9</button>
+                <button id="multiply" class="button operator key">*</button>
+                <button id="four" class="button digit key">4</button>
+                <button id="five" class="button digit key">5</button>
+                <button id="six" class="button digit key">6</button>
+                <button id="subtract" class="button operator key">-</button>
+                <button id="one" class="button digit key">1</button>
+                <button id="two" class="button digit key">2</button>
+                <button id="three" class="button digit key">3</button>
+                <button id="add" class="button operator key">+</button>
+                <button id="zero" class="button digit key">0</button>
+                <button id="point" class="button key">.</button>
+                <button id="equals" class="button key">=</button>
             </div>
         </div>
     </body>
