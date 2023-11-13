@@ -1,4 +1,10 @@
-/* page setup */
+/* page setup ---------------------------*/
+
+@media (max-width: 900px) {
+    #art {
+        display: none;
+    }
+}
 
 * {
     font-family: Georgia, Verdana, sans-serif;
@@ -18,67 +24,90 @@ body {
     background-color: black;
 }
 
-/**/
+/* calculator ---------------------------*/
 
 #calculator {
     width: 600px;
     min-width: 300px;
     max-width: 80%;
-    height: 80%;
+    height: 75%;
     min-height: 450px;
     max-height: 900px;
     border: 5px solid blue;
+    border-radius: 20% / 15%;
+    gap: 3%;
 }
 
-#art {
-    width: 40%;
-    height: 100%;
-    border: 5px solid green;
-}
-
-@media (max-width: 900px) {
-    #art {
-        display: none;
-    }
-}
-
-/**/
-
-#screen, #keyboard {
+#screen-container, #keyboard-container {
     width: 80%;
 }
 
-#screen {
+/* screen */
+
+#screen-container {
     height: 20%;
+    margin-top: 5%;
 }
 
-#keyboard {
+#screen {
+    height: 90%;
+    width: 95%;
+    justify-content: end;
+}
+
+#screen-text {
+    padding-right: 5%;
+    color: white;
+    font-size: 2rem;
+}
+
+/* keyboard */
+
+#keyboard-container {
     height: 60%;
+    padding: 2%;
+}
+
+.keyboard-column {
+    height: 100%;
+    width: 50%;
+    border: 0;
+    gap: 4%;
 }
 
 .keyboard-row {
     width: 100%;
     height: 20%;
+    border: 0;
 }
 
 .button {
-    width: 25%;
+    width: 50%;
     height: 100%;
+    border-radius: 20% / 50%;
+    font-size: 1.8rem;
+    margin: 4%;
 }
 
+#zero {
+    width: 100%;
+    border-radius: 10% / 50%;
+}
 
+/* art ----------------------------------*/
 
+#art {
+    width: 50%;
+    height: 100%;
+    border: 5px solid green;
+}
 
-/* flex classes */
+/* flex classes -------------------------*/
 
 .flex {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.row {
-    flex-direction: row;
 }
 
 .column {
