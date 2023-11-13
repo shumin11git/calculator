@@ -2,7 +2,7 @@
 
 @media (max-width: 900px) {
     html {
-        font-size: 90% !important;
+        font-size: 80% !important;
     }
     #art {
         display: none;
@@ -25,22 +25,23 @@ html {
 body {
     height: 100%;
     width: 100%;
-    background-color: black;
+    background: radial-gradient(circle at 110% -50%, #6aabe9, rgb(0, 0, 0) 90%);
 }
 
 /* calculator ---------------------------*/
 
 #calculator {
-    width: 600px;
-    min-width: 400px;
-    max-width: 80%;
-    height: 75%;
-    min-height: 600px;
+    position: relative;
+    width: 400px;
+    min-width: 200px;
+    max-width: 95%;
+    height: 70%;
+    min-height: 450px;
     max-height: 900px;
-    border-radius: 20% / 15%;
+    border-radius: 15%;
     gap: 3%;
-    background: linear-gradient(to right, #24101c, #e9a86a 12%, #e9a86a 92%, #24101c);
-    box-shadow: inset 6px -12px 20px black;
+    background: linear-gradient(to right, #172533d0 1%, #e9a86a 12%, #e9a86a 92%, #172533d0 101%);
+    box-shadow: inset 5px -10px 10px black;
 }
 
 #screen, #keyboard {
@@ -64,7 +65,6 @@ body {
     justify-content: end;
     background: radial-gradient(circle at 80% 30%,#87816e, #746e5c 20%, #55503b 80%, #3c3929);
     box-shadow: inset -2px 4px 10px #2c261e;
-    text-shadow: -4px 8px 2px #3b372c;
     border-radius: 10%;
 }
 
@@ -73,17 +73,18 @@ body {
     z-index: 1;
     height: 95%;
     width: 97%;
-    background: radial-gradient(rgba(237, 216, 181, 0.1) 40%, rgba(0, 0, 0, 0.3));
+    background: radial-gradient(rgba(237, 216, 181, 0.1) 10%, rgba(0, 0, 0, 0.4));
     box-shadow: inset -2px 4px 10px #2c261e;
     border-radius: 10%;
 }
 
 #screen-text {
-    padding-right: 2%;
-    color: #c6bd85;
+    padding-right: 3%;
+    color: #d4ca8f;
     font-size: 3rem;
-    font-family: 'Audiowide';
+    font-family: 'Monomaniac One', monospace;
     overflow: hidden;
+    text-shadow: -3px 6px 2px #23384c;
 }
 
 #screen-light-spot {
@@ -91,10 +92,10 @@ body {
     z-index: 2;
     top: 0;
     right: 0;
-    width: 40%;
+    width: 50%;
     height: 60%;
     border-radius: 50%;
-    background: radial-gradient(rgba(255, 255, 255, 0.2), transparent 50%);
+    background: radial-gradient(#6aace92f, transparent 50%);
     transform: rotate(5deg);
 }
 
@@ -110,18 +111,18 @@ body {
 .button {
     height: 100%;
     border-radius: 40% / 50%;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     background: radial-gradient(circle at 0% 100%, #dfbfb5, #f8f1e9);
     border: 0;
-    font-family: 'Audiowide';
+    font-family: 'Audiowide', Verdana, sans-serif;
     color: #4d2815;
-    box-shadow: inset 2px -4px 10px #2c261e;
+    box-shadow: inset 2px -4px 10px #23384c;
     filter: drop-shadow(-2px 5px 2px #170914);
 }
 
 .button:active {
     background: radial-gradient(circle at 0% 100%, #d8b9af, #ede7df);
-    filter: drop-shadow(-1px 3px 2px #170914);
+    filter: drop-shadow(-1px 3px 2px #172533);
     transform: scale(0.98);
     color: #342223;
 }
@@ -129,13 +130,6 @@ body {
 #zero {
     grid-column: span 2;
     border-radius: 20% / 50%;
-}
-
-/* art ----------------------------------*/
-
-#art {
-    width: 50%;
-    height: 100%;
 }
 
 /* flex classes -------------------------*/

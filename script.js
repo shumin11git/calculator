@@ -1,6 +1,6 @@
 // variables for control ----------------->
 
-let maxTextLength = 10;
+let maxTextLength = 11;
 let showCount = 0;
 
 // query selectors ----------------------->
@@ -72,7 +72,7 @@ window.addEventListener('keydown', handleKey);
 
 function printDigitToScreen(digit) {
     screenText.textContent = screenText.textContent.toString();
-    if (screenText.textContent.length <= maxTextLength) {
+    if (screenText.textContent.length < maxTextLength) {
         screenText.textContent += digit;
     }
 }
@@ -166,18 +166,24 @@ function handleClear(e) {
 }
 
 function handlePoint(e) {
-    console.log(e.type);
     if (!screenText.textContent.includes('.')) {
         screenText.textContent += '.';
     }
 }
 
 function handlePlusMinus(e) {
-    if (screenText.textContent.length >= maxTextLength - 1) return;
-    if (screenText.textContent > 0 || screenText.textContent === '') {
+    if (screenText.textContent
+            .toString()
+            .replace('-', '')
+            .length >= 
+            maxTextLength) 
+            return;
+    if (screenText.textContent > 0 || 
+        screenText.textContent === '') {
         screenText.textContent = '-' + screenText.textContent;
-    } else if (screenText.textContent < 0|| screenText.textContent === '-') {
-        screenText.textContent = screenText.textContent.slice(1);
+    } else if (screenText.textContent < 0 || 
+        screenText.textContent === '-') {
+        screenText.textContent = screenText.textContent.toString().slice(1);
     };
 }
 
@@ -214,7 +220,7 @@ function getAnswer(a, operator, b) {
     }
     while (crudeAnswer.toString().length > maxTextLength) {
         if (Number.isInteger(crudeAnswer)) {
-            return 'Too big.';
+            return 'Too big!';
         } else {
             crudeAnswer = Number(crudeAnswer.toString().slice(0, -1));
         }
